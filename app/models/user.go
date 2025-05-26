@@ -11,7 +11,7 @@ type User struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	Username  string `json:"username" gorm:"unique;type:varchar(20)" validate:"required,min=6,max=32"`
-	Password  string `json:"-" gorm:"type:varchar(255);" validate:"required,min=6"`
+	Password  string `json:"password" gorm:"type:varchar(255);" validate:"required,min=6"`
 	FullName  string `json:"full_name" gorm:"type:varchar(100);" validate:"required,min=6,max=32"`
 }
 type UserSession struct {
@@ -33,4 +33,21 @@ func (l User) Validate() error {
 func (l UserSession) Validate() error {
 	v := validator.New()
 	return v.Struct(l)
+}
+
+type LoginRequest struct {
+	Username string `json:"username" validate:"required`
+	Password string `json:"password" validate:"required`
+}
+
+func (l LoginRequest) Validate() error {
+	v := validator.New()
+	return v.Struct(l)
+}
+
+type LoginResponse struct {
+	Username     string `json:"username"`
+	FullName     string `json:"full_name"`
+	Token        string `json:"token"`
+	RefreshToken string `json:"refresh_token"`
 }
