@@ -12,17 +12,17 @@ type User struct {
 	UpdatedAt time.Time
 	Username  string `json:"username" gorm:"unique;type:varchar(20)" validate:"required,min=6,max=32"`
 	Password  string `json:"password" gorm:"type:varchar(255);" validate:"required,min=6"`
-	FullName  string `json:"full_name" gorm:"type:varchar(100);" validate:"required,min=6,max=32"`
+	FullName  string `json:"full_name" gorm:"type:varchar(100);" validate:"required,min=6"`
 }
 type UserSession struct {
-	ID                  uint `json:"id" gorm:"primaryKey;autoIncrement"`
+	ID                  uint `gorm:"primaryKey;autoIncrement"`
 	CreatedAt           time.Time
 	UpdatedAt           time.Time
-	UserID              int       `json:"user_id" gorm:"type:int;" validate:"required"`
-	Token               int       `json:"token" gorm:"type:varchar(255);" validate:"required"`
+	UserID              uint      `json:"user_id" gorm:"type:int;" validate:"required"`
+	Token               string    `json:"token" gorm:"type:varchar(255);" validate:"required"`
 	RefreshToken        string    `json:"refresh_token" gorm:"type:varchar(255);" validate:"required"`
-	TokenExpired        time.Time `json:"_" validate:"required"`
-	RefreshTokenExpired time.Time `json:"_" validate:"required"`
+	TokenExpired        time.Time `json:"-" validate:"required"`
+	RefreshTokenExpired time.Time `json:"-" validate:"required"`
 }
 
 func (l User) Validate() error {
@@ -36,8 +36,8 @@ func (l UserSession) Validate() error {
 }
 
 type LoginRequest struct {
-	Username string `json:"username" validate:"required`
-	Password string `json:"password" validate:"required`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
 }
 
 func (l LoginRequest) Validate() error {
