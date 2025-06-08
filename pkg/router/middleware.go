@@ -14,8 +14,8 @@ import (
 func MiddlewareValidateAuth(ctx *fiber.Ctx) error {
 	auth := ctx.Get("authorization")
 	if auth == "" {
-		log.Println("Authorization header is missing")
-		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "Authorization header is missing", nil)
+		log.Println("authorization header is missing")
+		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "authorization header is missing", nil)
 	}
 
 	_, err := repository.GetUserSessionByToken(ctx.Context(), auth)
@@ -29,8 +29,8 @@ func MiddlewareValidateAuth(ctx *fiber.Ctx) error {
 		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "Invalid Token di Middleware", nil)
 	}
 	if time.Now().Unix() > claim.ExpiresAt.Unix() {
-		log.Println("Token has expired", claim.ExpiresAt)
-		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "Token has expired", nil)
+		log.Println("token has expired", claim.ExpiresAt)
+		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "token has expired", nil)
 	}
 	ctx.Locals("username", claim.Username)
 	ctx.Locals("fullname", claim.Fullname)
