@@ -31,13 +31,13 @@ func ServeWSMessaging(app *fiber.App) {
 		for {
 			var msg models.MessagePayload
 			if err := c.ReadJSON(&msg); err != nil {
-				fmt.Println("error reading JSON:", err)
+				log.Println("error reading JSON:", err)
 				break // Exit on error
 			}
 			msg.Date = time.Now() // Set the current time for the message
 			err := repository.InsertNewMessage(context.Background(), msg)
 			if err != nil {
-				fmt.Println("error inserting message:", err)
+				log.Println("error inserting message:", err)
 			}
 			// Broadcast the message to all clients
 			broadcast <- msg
@@ -49,7 +49,7 @@ func ServeWSMessaging(app *fiber.App) {
 			for client := range clients {
 				err := client.WriteJSON(msg)
 				if err != nil {
-					fmt.Println("error writing JSON:", err)
+					log.Println("error writing JSON:", err)
 					client.Close()          // Close the connection on error
 					delete(clients, client) // Remove the client from the map
 				}

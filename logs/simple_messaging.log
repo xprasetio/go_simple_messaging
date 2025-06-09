@@ -1,0 +1,19 @@
+2025/06/09 16:25:48 setup.go:38: Database connected successfully
+2025/06/09 16:25:48 setup.go:51: MongoDB connected successfully
+2025/06/09 16:27:52 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 16:27:55 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 16:27:56 middleware.go:27: failed to parse token: token has invalid claims: token is expired
+2025/06/09 19:01:13 setup.go:38: Database connected successfully
+2025/06/09 19:01:13 setup.go:51: MongoDB connected successfully
+2025/06/09 19:12:46 setup.go:38: Database connected successfully
+2025/06/09 19:12:46 setup.go:51: MongoDB connected successfully
+2025/06/09 19:12:55 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:12:56 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:14:16 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:23:13 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:23:14 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:23:15 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:23:16 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 19:23:21 middleware.go:27: failed to parse token: token has invalid claims: token is expired
+2025/06/09 19:23:22 middleware.go:27: failed to parse token: token has invalid claims: token is expired
+2025/06/09 19:25:41 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'

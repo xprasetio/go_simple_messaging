@@ -1,7 +1,6 @@
 package router
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -25,7 +24,7 @@ func MiddlewareValidateAuth(ctx *fiber.Ctx) error {
 	}
 	claim, err := jwt_token.ValidateToken(ctx.Context(), auth)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "Invalid Token di Middleware", nil)
 	}
 	if time.Now().Unix() > claim.ExpiresAt.Unix() {
@@ -46,7 +45,7 @@ func MiddlewareRefreshToken(ctx *fiber.Ctx) error {
 	}
 	claim, err := jwt_token.ValidateToken(ctx.Context(), auth)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return response.SendFailureResponse(ctx, fiber.StatusUnauthorized, "Invalid Token di Middleware", nil)
 	}
 	if time.Now().Unix() > claim.ExpiresAt.Unix() {
