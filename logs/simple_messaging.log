@@ -17,3 +17,12 @@
 2025/06/09 19:23:21 middleware.go:27: failed to parse token: token has invalid claims: token is expired
 2025/06/09 19:23:22 middleware.go:27: failed to parse token: token has invalid claims: token is expired
 2025/06/09 19:25:41 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 21:40:02 setup.go:38: Database connected successfully
+2025/06/09 21:40:02 setup.go:51: MongoDB connected successfully
+2025/06/09 21:40:23 middleware.go:27: failed to parse token: token has invalid claims: token is expired
+2025/06/09 21:40:32 user_controller.go:42: failed to insert user: Error 1062 (23000): Duplicate entry 'ekoprasetio' for key 'users.uni_users_username'
+2025/06/09 21:47:44 setup.go:38: Database connected successfully
+2025/06/09 21:47:44 setup.go:51: MongoDB connected successfully
+2025/06/09 21:48:39 user_controller.go:32: failed to validate request: Key: 'User.Username' Error:Field validation for 'Username' failed on the 'min' tag
+2025/06/09 22:04:14 setup.go:38: Database connected successfully
+2025/06/09 22:04:14 setup.go:51: MongoDB connected successfully
