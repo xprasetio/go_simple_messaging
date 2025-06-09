@@ -1,12 +1,15 @@
 package database
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/kooroshh/fiber-boostrap/app/models"
 	"github.com/kooroshh/fiber-boostrap/pkg/env"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -34,4 +37,16 @@ func SetupDatabase() {
 	}
 	fmt.Println("Database connected successfully")
 	DB.Logger = logger.Default.LogMode(logger.Info)
+}
+
+func SetupMongoDB() {
+	uri := env.GetEnv("MONGO_URI", "mongodb://localhost:27017")
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
+	if err != nil {
+		log.Fatal("Failed to connect to MongoDB", err.Error())
+		os.Exit(1)
+	}
+	coll := client.Database(env.GetEnv("MONGO_DB_NAME", "")).Collection("message_history")
+	MongoDB = coll
+	fmt.Println("MongoDB connected successfully")
 }

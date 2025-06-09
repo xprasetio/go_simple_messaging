@@ -15,6 +15,7 @@ import (
 func NewApplication() *fiber.App {
 	env.SetupEnvFile()
 	database.SetupDatabase()
+	database.SetupMongoDB()
 	engine := html.New("./views", ".html")
 	app := fiber.New(fiber.Config{Views: engine})
 	app.Use(recover.New()) // menghandle panic agar tidak error
